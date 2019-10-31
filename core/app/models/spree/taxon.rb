@@ -25,8 +25,6 @@ module Spree
     after_save :touch_ancestors_and_taxonomy
     after_touch :touch_ancestors_and_taxonomy
 
-    include ::Spree::Config.taxon_attachment_module
-
     self.whitelisted_ransackable_attributes = %w[name]
 
     # @note This method is meant to be overridden on a store by store basis.
