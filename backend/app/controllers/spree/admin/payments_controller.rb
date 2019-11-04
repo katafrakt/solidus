@@ -13,6 +13,10 @@ module Spree
 
       respond_to :html
 
+      # moved here directly from solidus_paypal_braintree gem to optimize load times
+      # in tests and development
+      helper :braintree_admin
+
       def index
         @payments = @order.payments.includes(refunds: :reason)
         @refunds = @payments.flat_map(&:refunds)
