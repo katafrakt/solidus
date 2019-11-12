@@ -876,12 +876,7 @@ module Spree
       payments.completed.each { |payment| payment.cancel! unless payment.fully_refunded? }
       payments.store_credits.pending.each(&:void_transaction!)
 
-      send_cancel_email
       recalculate
-    end
-
-    def send_cancel_email
-      Spree::Config.order_mailer_class.cancel_email(self).deliver_later
     end
 
     def after_resume
